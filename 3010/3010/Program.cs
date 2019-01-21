@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,7 +64,28 @@ namespace _3010
             //Console.WriteLine("Suma divizorilor este: {0}", SumaDivizori(n));
 
             Console.WriteLine("Numarul de divizori este: {0}", NumarDivizoriFast(n));
-            //Console.WriteLine("Suma divizorilor este: {0}", SumaDivizoriFast(n));
+            Console.WriteLine("Suma divizorilor este: {0}", SumaDivizoriFast(n));
+        }
+
+        private static ulong SumaDivizoriFast(ulong n)
+        {
+            ulong s = 1;
+            ulong c= 1;
+            ulong d = 2;
+            ulong a = 0;
+            while (n > 1)
+            {
+                a = 0;
+                while (n % d == 0)
+                {
+                    a++;
+                    n = n / d;
+                }
+                ulong calcul = (ulong)(Math.Pow(d, a + 1) - 1)/(d - 1);
+                s = s * calcul;
+                d++;
+            }
+            return s;
         }
 
         private static ulong NumarDivizoriFast(ulong n)
